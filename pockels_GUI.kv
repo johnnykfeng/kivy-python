@@ -11,10 +11,10 @@
         font_size: '36sp'
         size_hint: 1, None
         height: '60dp'
-        pos_hint: {'top': 0.98}
         color: 1,1,1,1
-        halign: 'center'
-        valign: 'middle'
+        halign: 'left'
+        valign: 'top'
+        pos_hint: {'top': 0.98, 'right': 0.7}
     
     BoxLayout:
         orientation: 'horizontal'
@@ -41,6 +41,7 @@
                     color: 1,1,1,1
                     halign: 'right'
                 TextInput:
+                    id: save_folder_input
                     hint_text: 'Text'
                     background_color: 0.95,0.95,0.95,1
                 Label:
@@ -48,6 +49,7 @@
                     color: 1,1,1,1
                     halign: 'right'
                 TextInput:
+                    id: part_id_input
                     hint_text: 'Text'
                     background_color: 0.95,0.95,0.95,1
                 Label:
@@ -55,6 +57,7 @@
                     color: 1,1,1,1
                     halign: 'right'
                 TextInput:
+                    id: trial_num_input
                     hint_text: 'Text'
                     background_color: 0.95,0.95,0.95,1
             
@@ -70,6 +73,7 @@
                     size_hint_x: 0.6
                     halign: 'right'
                 TextInput:
+                    id: led_current_input
                     hint_text: 'number input'
                     background_color: 0.95,0.95,0.95,1
                     size_hint_x: 0.4
@@ -82,36 +86,39 @@
                 spacing: '10dp'
                 BoxLayout:
                     orientation: 'horizontal'
-                    #size_hint_x: 0.5
                     Label:
                         text: 'Analyzer\nParallel'
                         color: 1,1,1,1
                         halign: 'center'
                         valign: 'middle'
                     TextInput:
+                        id: analyzer_parallel_input
                         hint_text: 'number input'
                         size_hint: None, None
                         size: '100dp', '40dp'
                         background_color: 0.95,0.95,0.95,1
                 BoxLayout:
                     orientation: 'horizontal'
-                    #size_hint_x: 0.5
                     Label:
                         text: 'Analyzer\nCross'
                         color: 1,1,1,1
                         halign: 'center'
                         valign: 'middle'
                     TextInput:
+                        id: analyzer_cross_input
                         hint_text: 'number input'
                         size_hint: None, None
                         size: '100dp', '40dp'
                         background_color: 0.95,0.95,0.95,1
             
+            # VOLTAGE SWEEP
             BoxLayout:
                 orientation: 'vertical'
+                halign: 'left'
+                valign: 'top'
                 size_hint_y: None
-                height: '140dp'
-                padding: '0dp', '10dp', '0dp', '0dp'
+                height: '100dp'
+                padding: '1dp', '1dp', '1dp', '1dp'
                 canvas.before:
                     Color:
                         rgba: 1, 0.7, 0.1, 0.3
@@ -120,39 +127,60 @@
                         rectangle: self.x, self.y, self.width, self.height
                 Label:
                     text: 'Voltage Sweep'
-                    font_size: '22sp'
+                    font_size: '18sp'
                     color: 1,1,1,1
                     size_hint_y: None
-                    height: '30dp'
+                    height: '20dp'
+                    halign: 'left'
+                    valign: 'top'
+                    pos_hint: {'bottom':0.1, 'right':1}
                 GridLayout:
                     cols: 3
                     size_hint_y: None
-                    height: '40dp'
-                    spacing: '8dp'
+                    height: '60dp'
+                    spacing: '3dp'
                     Label:
-                        text: 'Start'
+                        text: 'Start (V)'
                         color: 1,1,1,1
+                        size_hint_y: None
+                        height: '28dp'
                     Label:
-                        text: 'Stop'
+                        text: 'Stop (V)'
                         color: 1,1,1,1
+                        size_hint_y: None
+                        height: '28dp'
                     Label:
-                        text: 'Step'
+                        text: 'Step (V)'
                         color: 1,1,1,1
+                        size_hint_y: None
+                        height: '28dp'
                     TextInput:
+                        id: voltage_start_input
                         hint_text: 'number'
                         background_color: 0.95,0.95,0.95,1
+                        size_hint_x: 0.3
+                        size_hint_y: None
+                        height: '30dp'
                     TextInput:
+                        id: voltage_stop_input
                         hint_text: 'number'
                         background_color: 0.95,0.95,0.95,1
+                        size_hint_x: 0.3
+                        size_hint_y: None
+                        height: '30dp'
                     TextInput:
+                        id: voltage_step_input
                         hint_text: 'number'
                         background_color: 0.95,0.95,0.95,1
-            
+                        size_hint_x: 0.3
+                        size_hint_y: None
+                        height: '30dp'
+
             BoxLayout:
                 orientation: 'vertical'
                 size_hint_y: None
-                height: '70dp'
-                padding: '0dp', '10dp', '0dp', '0dp'
+                height: '60dp'
+                padding: '1dp', '1dp', '1dp', '1dp'
                 canvas.before:
                     Color:
                         rgba: 0.3, 0.2, 0.7, 0.3
@@ -164,20 +192,21 @@
                     size_hint_y: None
                     height: '30dp'
                     spacing: '8dp'
-                    Label:
-                        text: 'X-ray Sweep'
-                        font_size: '18sp'
-                        color: 1,1,1,1
-                        size_hint_x: 0.7
                     CheckBox:
                         active: True
                         size_hint_x: 0.1
                         color: 0.5,0.5,1,1
-                        disabled: True
+                        disabled: False
+                    Label:
+                        text: 'X-ray Currents (mA)'
+                        font_size: '18sp'
+                        color: 1,1,1,1
+                        size_hint_x: 0.4
                     TextInput:
+                        id: xray_sweep_input
                         hint_text: 'List of Numbers'
                         background_color: 0.95,0.95,0.95,1
-                        size_hint_x: 0.7
+                        size_hint_x: 0.8
             
             BoxLayout:
                 orientation: 'vertical'
@@ -195,20 +224,21 @@
                     size_hint_y: None
                     height: '30dp'
                     spacing: '8dp'
-                    Label:
-                        text: 'Red LED Sweep'
-                        font_size: '18sp'
-                        color: 1,1,1,1
-                        size_hint_x: 0.7
                     CheckBox:
                         active: True
                         size_hint_x: 0.1
                         color: 1,0.2,0.2,1
-                        disabled: True
+                        disabled: False
+                    Label:
+                        text: 'Red LED Currents (mA)'
+                        font_size: '18sp'
+                        color: 1,1,1,1
+                        size_hint_x: 0.4
                     TextInput:
+                        id: red_led_sweep_input
                         hint_text: 'List of Numbers'
                         background_color: 0.95,0.95,0.95,1
-                        size_hint_x: 0.7
+                        size_hint_x: 0.8
         
         # Right Column
         BoxLayout:
@@ -218,13 +248,15 @@
             spacing: '20dp'
             
             Button:
-                text: 'Preview Routine\nButton'
+                id: preview_routine_btn
+                text: 'Preview Routine Button'
                 size_hint: None, None
-                size: '220dp', '70dp'
+                size: '200dp', '50dp'
                 pos_hint: {'center_x': 0.5}
                 background_color: 0.5,0.7,1,1
                 color: 0,0,0,1
-                font_size: '20sp'
+                font_size: '18sp'
+                on_press: root.preview_routine()
             
             BoxLayout:
                 orientation: 'vertical'
@@ -237,6 +269,7 @@
                         pos: self.pos
                         size: self.size
                 Label:
+                    id: routine_output_label
                     text: 'Metadata: {...}\n\n...\n\nRoutine:\n    measurement_1\n    measurement_2\n    measurement_3\n    ...'
                     color: 0.2,0.2,0.2,1
                     halign: 'left'
