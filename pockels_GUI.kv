@@ -1,0 +1,255 @@
+<PockelsRoot>:
+    canvas.before:
+        Color:
+            rgb: 0.1, 0.1, 0.12
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    
+    Label:
+        text: 'Pockels Static Routine'
+        font_size: '36sp'
+        size_hint: 1, None
+        height: '60dp'
+        pos_hint: {'top': 0.98}
+        color: 1,1,1,1
+        halign: 'center'
+        valign: 'middle'
+    
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint: 1, 0.85
+        pos_hint: {'x':0, 'y':0.08}
+        spacing: '30dp'
+        
+        # Left Column
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_x: 0.5
+            spacing: '10dp'
+            padding: '20dp', '0dp', '0dp', '0dp'
+            
+            GridLayout:
+                cols: 2
+                size_hint_y: None
+                height: self.minimum_height
+                row_default_height: '40dp'
+                row_force_default: True
+                spacing: '8dp'
+                Label:
+                    text: 'Save Folder:'
+                    color: 1,1,1,1
+                    halign: 'right'
+                TextInput:
+                    hint_text: 'Text'
+                    background_color: 0.95,0.95,0.95,1
+                Label:
+                    text: 'Part ID:'
+                    color: 1,1,1,1
+                    halign: 'right'
+                TextInput:
+                    hint_text: 'Text'
+                    background_color: 0.95,0.95,0.95,1
+                Label:
+                    text: 'Trial #:'
+                    color: 1,1,1,1
+                    halign: 'right'
+                TextInput:
+                    hint_text: 'Text'
+                    background_color: 0.95,0.95,0.95,1
+            
+            # 1550nm LED CURRENT
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint_y: None
+                height: '40dp'
+                spacing: '10dp'
+                Label:
+                    text: '1550nm LED Current:'
+                    color: 1,1,1,1
+                    size_hint_x: 0.6
+                    halign: 'right'
+                TextInput:
+                    hint_text: 'number input'
+                    background_color: 0.95,0.95,0.95,1
+                    size_hint_x: 0.4
+
+            # ANALYZER POSITIONS
+            BoxLayout: 
+                orientation: 'horizontal'
+                size_hint_y: None
+                height: '40dp'
+                spacing: '10dp'
+                BoxLayout:
+                    orientation: 'horizontal'
+                    #size_hint_x: 0.5
+                    Label:
+                        text: 'Analyzer\nParallel'
+                        color: 1,1,1,1
+                        halign: 'center'
+                        valign: 'middle'
+                    TextInput:
+                        hint_text: 'number input'
+                        size_hint: None, None
+                        size: '100dp', '40dp'
+                        background_color: 0.95,0.95,0.95,1
+                BoxLayout:
+                    orientation: 'horizontal'
+                    #size_hint_x: 0.5
+                    Label:
+                        text: 'Analyzer\nCross'
+                        color: 1,1,1,1
+                        halign: 'center'
+                        valign: 'middle'
+                    TextInput:
+                        hint_text: 'number input'
+                        size_hint: None, None
+                        size: '100dp', '40dp'
+                        background_color: 0.95,0.95,0.95,1
+            
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: '140dp'
+                padding: '0dp', '10dp', '0dp', '0dp'
+                canvas.before:
+                    Color:
+                        rgba: 1, 0.7, 0.1, 0.3
+                    Line:
+                        width: 2
+                        rectangle: self.x, self.y, self.width, self.height
+                Label:
+                    text: 'Voltage Sweep'
+                    font_size: '22sp'
+                    color: 1,1,1,1
+                    size_hint_y: None
+                    height: '30dp'
+                GridLayout:
+                    cols: 3
+                    size_hint_y: None
+                    height: '40dp'
+                    spacing: '8dp'
+                    Label:
+                        text: 'Start'
+                        color: 1,1,1,1
+                    Label:
+                        text: 'Stop'
+                        color: 1,1,1,1
+                    Label:
+                        text: 'Step'
+                        color: 1,1,1,1
+                    TextInput:
+                        hint_text: 'number'
+                        background_color: 0.95,0.95,0.95,1
+                    TextInput:
+                        hint_text: 'number'
+                        background_color: 0.95,0.95,0.95,1
+                    TextInput:
+                        hint_text: 'number'
+                        background_color: 0.95,0.95,0.95,1
+            
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: '70dp'
+                padding: '0dp', '10dp', '0dp', '0dp'
+                canvas.before:
+                    Color:
+                        rgba: 0.3, 0.2, 0.7, 0.3
+                    Line:
+                        width: 2
+                        rectangle: self.x, self.y, self.width, self.height
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: '30dp'
+                    spacing: '8dp'
+                    Label:
+                        text: 'X-ray Sweep'
+                        font_size: '18sp'
+                        color: 1,1,1,1
+                        size_hint_x: 0.7
+                    CheckBox:
+                        active: True
+                        size_hint_x: 0.1
+                        color: 0.5,0.5,1,1
+                        disabled: True
+                    TextInput:
+                        hint_text: 'List of Numbers'
+                        background_color: 0.95,0.95,0.95,1
+                        size_hint_x: 0.7
+            
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: '70dp'
+                padding: '0dp', '10dp', '0dp', '0dp'
+                canvas.before:
+                    Color:
+                        rgba: 1, 0.1, 0.1, 0.3
+                    Line:
+                        width: 2
+                        rectangle: self.x, self.y, self.width, self.height
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: '30dp'
+                    spacing: '8dp'
+                    Label:
+                        text: 'Red LED Sweep'
+                        font_size: '18sp'
+                        color: 1,1,1,1
+                        size_hint_x: 0.7
+                    CheckBox:
+                        active: True
+                        size_hint_x: 0.1
+                        color: 1,0.2,0.2,1
+                        disabled: True
+                    TextInput:
+                        hint_text: 'List of Numbers'
+                        background_color: 0.95,0.95,0.95,1
+                        size_hint_x: 0.7
+        
+        # Right Column
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_x: 0.5
+            padding: '0dp', '0dp', '20dp', '0dp'
+            spacing: '20dp'
+            
+            Button:
+                text: 'Preview Routine\nButton'
+                size_hint: None, None
+                size: '220dp', '70dp'
+                pos_hint: {'center_x': 0.5}
+                background_color: 0.5,0.7,1,1
+                color: 0,0,0,1
+                font_size: '20sp'
+            
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: 1, 0.7
+                padding: '10dp'
+                canvas.before:
+                    Color:
+                        rgba: 0.95,0.97,1,1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                Label:
+                    text: 'Metadata: {...}\n\n...\n\nRoutine:\n    measurement_1\n    measurement_2\n    measurement_3\n    ...'
+                    color: 0.2,0.2,0.2,1
+                    halign: 'left'
+                    valign: 'top'
+                    text_size: self.size
+            
+            Widget:
+                size_hint_y: 0.1
+            Button:
+                text: 'Execute Routine'
+                size_hint: None, None
+                size: '220dp', '60dp'
+                pos_hint: {'center_x': 0.5}
+                background_color: 0.7,1,0.7,1
+                color: 0,0.2,0,1
+                font_size: '20sp' 
